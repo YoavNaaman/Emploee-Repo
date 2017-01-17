@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employe Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/index.js"></script>
+  </head>
+  <body ng-app="myApp">
+    <center><h2>Employe Manager</h2></center>
+  <div ng-controller="MainCtr as main">
+    <h3>Employee list</h3>
+    <p>{{main.employees}}</p>
+    <button ng-click="Main()"> Get list </button>   <button> Empty list </button>
+  </div>
+  <div ng-controller = "CreateCtr as crt">
+    <h3>Create New Employee</h3>
+    First Name <input type = "text" ng-model = "firstName"/>
+    Last Name <input type = "text" ng-model = "lastName"/><br>
+    <button ng-click="add()"> Create </button>
+  </div>
+  </body>
+</html>
