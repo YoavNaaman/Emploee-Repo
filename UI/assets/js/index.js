@@ -1,9 +1,13 @@
+var URL ='http://localhost:8080/emploees/';
   var module = angular.module("myApp", []);
   module.controller("MainCtr",Main);
-  function Main($scope,$http){
+  function Main($http){
+    var self = this;
+    this.employees = "( empty )";
+    this.refresh = function ($scope){
       var req = {
        method: 'GET',
-       url: 'http://localhost:8080/emploees/',
+       url: URL,
       }
 
       $http(req).then(onsuccess, onerror);
@@ -16,31 +20,48 @@
            ' '+ value.lastName+') ';
      })
     console.log(html);
-    $scope.main.employees = html;
+    if(response.data.length > 0){
+      self.employees = html;
+    }
    };
-
       function onerror(response){
       console.log("Error in get list!");
     };
+  };
+    this.add = function(){
+        var newEmployee = {
+          "id":uuid(),
+           "firstName":this.firstName,
+           "lastName":this.lastName
+        }
+       if(!isEmpty(this.firstName) && !isEmpty(this.lastName)){
+          $http.post(URL,newEmployee).then(onsuccess, onerror);
+        }
+
+        function onsuccess(response){
+        console.log("Employee added!");
+        self.firstName = "";
+        self.lastName = "";
+      };
+
+        function onerror(response){
+        console.log("Employee was not added - Error !");
+      };
+      function uuid() {
+        var uuid = "", i, random;
+        for (i = 0; i < 32; i++) {
+          random = Math.random() * 16 | 0;
+
+          if (i == 8 || i == 12 || i == 16 || i == 20) {
+            uuid += "-"
+          }
+          uuid += (i == 12 ? 4 : (i == 16 ? (random & 3 | 8) : random)).toString(16);
+        }
+        return uuid;
+      }
+      function isEmpty(val){
+          return (val === undefined || val == null || val.length <= 0) ? true : false;
+      }
+    };
+    this.refresh();
   }
-
-module.controller("CreateCtr",add);
-function add($scope,$http){
-    var newEmployee = {
-      "id":uuid(),
-       "firstName":$scope.firstName,
-       "lastName":$scope.lastName
-    }
-   if(!isEmpty($scope.firstName) && !isEmpty($scope.lastName)){
-      $http.post('http://localhost:8080/emploees/',newEmployee).then(onsuccess, onerror);
-    }
-
-    function onsuccess(response){
-    console.log("Employee added!");
-
-  };
-
-    function onerror(response){
-    console.log("Employee was not added - Error !");
-  };
-}
