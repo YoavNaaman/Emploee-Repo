@@ -12,7 +12,11 @@
     <center><h2>Employe Manager</h2></center>
   <div ng-controller="MainCtr as main">
     <h3>Employee list</h3>
-    <p ng-bind="main.employees"></p>
+    <div ng-repeat="obj in main.employees">
+      First Name : {{obj.firstName}}
+      Last Name : {{obj.lastName}}
+      <hr/>
+    </div>
     <button ng-click="main.refresh()"> Refersh list </button>
     <h3>Create New Employee</h3>
     First Name <input type = "text" ng-model = "main.firstName"/>
