@@ -17,7 +17,7 @@ var URL ='http://localhost:8080/emploees/';
        html = [];
       angular.forEach(response.data, function(value, key){
           html.push({firstName: value.firstName,
-            lastName:value.lastName});
+            lastName:value.lastName, id:value.id});
      })
     console.log(html);
     if(response.data.length > 0){
@@ -42,6 +42,7 @@ var URL ='http://localhost:8080/emploees/';
         console.log("Employee added!");
         self.firstName = "";
         self.lastName = "";
+        self.refresh();
       };
 
         function onerror(response){
@@ -63,5 +64,19 @@ var URL ='http://localhost:8080/emploees/';
           return (val === undefined || val == null || val.length <= 0) ? true : false;
       }
     };
+    this.delete = function(id){
+      var req = {
+       method: 'DELETE',
+       url: URL+"/"+id,
+      }
+      $http(req).then(onsuccess, onerror);
+      function onsuccess(response){
+        console.log("Employee deleted!");
+        self.refresh();
+    }
+    function onerror(response){
+      console.log("Employee was not deleted - Error !");
+  };
+    }
     this.refresh();
   }
