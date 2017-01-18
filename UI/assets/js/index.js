@@ -79,4 +79,8 @@ var URL ='http://localhost:8080/emploees/';
   };
     }
     this.refresh();
+    this.addMode = false;
+    this.triggerAddMode = function(){
+      self.addMode = !self.addMode;
+    }
   }
