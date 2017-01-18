@@ -3,7 +3,7 @@ var URL ='http://localhost:8080/emploees/';
   module.controller("MainCtr",Main);
   function Main($http){
     var self = this;
-    this.employees = "( empty )";
+    this.employees = [];
     this.refresh = function ($scope){
       var req = {
        method: 'GET',
@@ -14,10 +14,10 @@ var URL ='http://localhost:8080/emploees/';
 
       function onsuccess(response){
       console.log("Success in get list!");
-       html = ' ';
+       html = [];
       angular.forEach(response.data, function(value, key){
-          html = html+ ' ('+value.firstName+' '+
-           ' '+ value.lastName+') ';
+          html.push({firstName: value.firstName,
+            lastName:value.lastName});
      })
     console.log(html);
     if(response.data.length > 0){
