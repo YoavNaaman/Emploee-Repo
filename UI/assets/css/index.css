@@ -1,0 +1,34 @@
+table, th, td {
+   border: 1px solid black;
+}
+.odd {
+  background-color: #a2cbd6;
+  color: black
+}
+.even {
+  background-color: #97cbd8;
+  color: black;
+}
+.table{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+tr td:first-child{
+    width:1%;
+    white-space:nowrap;
+}
+tr td:last-child{
+    width:3%;
+    white-space:nowrap;
+}
+
+.round{
+  moz-border-radius: 15px;
+}
