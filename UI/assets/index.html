@@ -12,14 +12,12 @@
     <center><h2>Employe Manager</h2></center>
   <div ng-controller="MainCtr as main">
     <h3>Employee list</h3>
-    <p>{{main.employees}}</p>
-    <button ng-click="Main()"> Get list </button>   <button> Empty list </button>
-  </div>
-  <div ng-controller = "CreateCtr as crt">
+    <p ng-bind="main.employees"></p>
+    <button ng-click="main.refresh()"> Refersh list </button>
     <h3>Create New Employee</h3>
-    First Name <input type = "text" ng-model = "firstName"/>
-    Last Name <input type = "text" ng-model = "lastName"/><br>
-    <button ng-click="add()"> Create </button>
+    First Name <input type = "text" ng-model = "main.firstName"/>
+    Last Name <input type = "text" ng-model = "main.lastName"/><br>
+    <button ng-click="main.add()"> Create </button>
   </div>
   </body>
 </html>
