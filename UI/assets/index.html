@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Employe Manager</title>
+    <title>Employee Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+      <link href="css/index.css" rel="stylesheet" media="screen">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="js/index.js"></script>
   </head>
   <body ng-app="myApp">
-    <center><h2>Employe Manager</h2></center>
+    <center><h2>Employee Manager</h2></center><hr>
   <div ng-controller="MainCtr as main">
     <h3>Employee list</h3>
-    <div ng-repeat="obj in main.employees">
-      First Name : {{obj.firstName}}
-      Last Name : {{obj.lastName}}
-      <hr/>
-    </div>
-    <button ng-click="main.refresh()"> Refersh list </button>
+    <table class="table">
+    <th> Total:{{main.employees.length}}</th> <th> First Name </th> <th> Last Name </th>
+    <tr ng-repeat="obj in main.employees" ng-class-odd="'odd'" ng-class-even="'even'">
+      <td>
+        {{$index}}.
+      </td>
+        <td>
+          {{obj.firstName}}
+        </td>
+        <td>
+          {{obj.lastName}}
+        </td>
+        <td class="delete">
+        <button ng-click="main.delete(obj.id)"><img src="../img/delete-48.png" alt="Delete">    </button>
+        </td>
+      </tr>
+    </table>
+    <button ng-click="main.refresh()" class="round"><img src="../img/refresh-64.png" alt="Refresh"></button>
+    <hr>
     <h3>Create New Employee</h3>
     First Name <input type = "text" ng-model = "main.firstName"/>
     Last Name <input type = "text" ng-model = "main.lastName"/><br>
