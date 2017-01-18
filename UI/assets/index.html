@@ -26,16 +26,16 @@
           {{obj.lastName}}
         </td>
         <td class="delete">
-        <button ng-click="main.delete(obj.id)"><img src="../img/delete-48.png" alt="Delete">    </button>
+        <button ng-click="main.delete(obj.id)"class="button" title="Delete"><img src="../img/delete-48.png" class="button" alt="Delete">    </button>
         </td>
       </tr>
     </table>
-    <button ng-click="main.refresh()" class="round"><img src="../img/refresh-64.png" alt="Refresh"></button>
+    <button ng-click="main.refresh()" class="button" title="Refresh"><img src="../img/refresh-64.png" alt="Refresh"></button>
     <hr>
     <h3>Create New Employee</h3>
     First Name <input type = "text" ng-model = "main.firstName"/>
-    Last Name <input type = "text" ng-model = "main.lastName"/><br>
-    <button ng-click="main.add()"> Create </button>
+    Last Name <input type = "text" ng-model = "main.lastName"/>
+    <button ng-click="main.add()" class="button" title="Create"><img src="../img/3942989_orig.png" alt="Create"></button>
   </div>
   </body>
 </html>
